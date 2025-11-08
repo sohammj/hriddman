@@ -562,3 +562,31 @@ section {
   border: 1px solid rgba(0,0,0,0.3) !important;
   box-shadow: none !important;
 }
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+/* ✅ Hide scrollbar for horizontal event scroll */
+.events-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.events-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.event-popup {
+  z-index: 99999 !important;
+}

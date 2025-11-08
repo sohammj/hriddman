@@ -9,6 +9,9 @@ import ShinyText from "@/components/ShinyText"
 
 import Aurora from '@/components/Aurora';
 
+import { EVENTS_QUERY } from "@/lib/queries";
+import type { EventType } from "@/lib/types";
+
 
 
 
@@ -81,11 +84,12 @@ type Settings = {
 export const revalidate = 60
 
 export default async function HomePage() {
-  const [home, services, testimonials, settings] = await Promise.all([
+  const [home, services, testimonials, settings, events] = await Promise.all([
     sanityClient.fetch<Home>(HOME_QUERY),
     sanityClient.fetch<Service[]>(SERVICES_QUERY),
     sanityClient.fetch<Testimonial[]>(TESTIMONIALS_QUERY),
     sanityClient.fetch<Settings>(SETTINGS_QUERY),
+    sanityClient.fetch<EventType[]>(EVENTS_QUERY),
   ])
 
   return (
@@ -377,6 +381,110 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {events && events.length > 0 && (
+        <>
+          <section id="events" className="section-pad card-soft">
+            <div className="container">
+              {/* Heading */}
+              <div className="row justify-content-center text-center mb-5">
+                <div className="col-lg-8">
+                  <h2 className="fw-semibold">Events & Workshops</h2>
+                  <p className="text-dark">
+                    Explore our latest sessions, talks, and workshops.
+                  </p>
+                </div>
+              </div>
+
+              {/* Events Grid or Scroll */}
+              <div
+                className={`${
+                  events.length === 1
+                    ? "d-flex justify-content-center"
+                    : "d-flex flex-wrap justify-content-center gap-4"
+                }`}
+              >
+                {events.map((event, i) => {
+                  const isPast =
+                    event.date && new Date(event.date) < new Date();
+
+                  return (
+                    <div
+                      key={event._id ?? `event-${i}`}
+                      className="col-md-6 col-lg-4 d-flex"
+                      style={{
+                        maxWidth: "420px",
+                        minWidth: "340px",
+                      }}
+                    >
+                      <div
+                        className={`card card-soft h-100 border-0 shadow-sm transition-all duration-300 w-100 ${
+                          isPast ? "opacity-75" : ""
+                        }`}
+                      >
+                        {/* Image */}
+                        {event.flyer?.asset && (
+                          <div className="ratio ratio-16x9 rounded-top-4 overflow-hidden">
+                            <Image
+                              src={urlFor(event.flyer)
+                                .width(1200)
+                                .height(800)
+                                .fit("crop")
+                                .url()}
+                              alt={event.title}
+                              width={1200}
+                              height={800}
+                              className="object-fit-cover"
+                            />
+                          </div>
+                        )}
+
+                        {/* Text */}
+                        <div className="card-body p-4 text-start">
+                          <h5 className="fw-semibold mb-2 text-[#0E1E2A]">
+                            {event.title}
+                          </h5>
+
+                          {event.date && (
+                            <p className="text-muted small mb-3">
+                              {new Date(event.date).toLocaleDateString("en-IN", {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                              })}
+                            </p>
+                          )}
+
+                          <p
+                            className="text-dark small lh-base mb-4"
+                            style={{ whiteSpace: "pre-line" }}
+                          >
+                            {event.description ||
+                              "Join us for this upcoming workshop or event."}
+                          </p>
+
+                          {event.link && (
+                            <Link
+                              href={event.link}
+                              target="_blank"
+                              className="btn btn-outline-dark btn-sm rounded-pill px-3"
+                            >
+                              Learn More
+                            </Link>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+
+          <div className="section-divider" />
+        </>
+      )}
+
 
       {/* CONTACT */}
       <section id="contact" className="section-pad card-soft">

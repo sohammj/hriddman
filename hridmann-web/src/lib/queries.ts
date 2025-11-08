@@ -152,3 +152,15 @@ export const SETTINGS_QUERY = groq`*[_type == "settings"][0]{
   }
 }`;
 
+
+export const EVENTS_QUERY = `
+  *[_type == "event"] | order(date desc) {
+    _id,
+    title,
+    description,
+    date,
+    bannerExpiry,
+    flyer,
+    link
+  }
+`;
