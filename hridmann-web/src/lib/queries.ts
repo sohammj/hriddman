@@ -164,3 +164,17 @@ export const EVENTS_QUERY = `
     link
   }
 `;
+
+
+
+export const GALLERY_QUERY = `
+  *[_type == "gallery"][0]{
+    title,
+    images[]{
+      _key,
+      title,
+      description,
+      asset->{ _id, url }
+    }
+  }
+`;

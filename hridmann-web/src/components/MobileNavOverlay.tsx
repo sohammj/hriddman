@@ -159,6 +159,17 @@ export default function MobileNavOverlay({
 
             <li className="mo-item">
               <a
+                href="/gallery"
+                className="mo-link"
+                onClick={() => setOpen(false)}
+              >
+                Gallery
+              </a>
+            </li>
+
+
+            <li className="mo-item">
+              <a
                 href="#contact"
                 className="mo-link"
                 onClick={(e) => handleAnchor(e, "#contact")}

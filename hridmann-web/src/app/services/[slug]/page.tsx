@@ -136,6 +136,9 @@ export default async function ServicePage(
               <Link className="nav-link text-dark" href="/#testimonials">Testimonials</Link>
             </li>
             <li className="nav-item">
+              <Link className="nav-link text-dark" href="/gallery">Gallery</Link>
+            </li>
+            <li className="nav-item">
               <Link className="nav-link text-dark" href="/#contact">Contact</Link>
             </li>
           </ul>
