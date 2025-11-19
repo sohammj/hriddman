@@ -590,3 +590,39 @@ section {
 .event-popup {
   z-index: 99999 !important;
 }
+
+
+
+
+/* Improve mobile card spacing for long text sections */
+@media (max-width: 576px) {
+  .info-card {
+    padding: 1.5rem !important;
+    border-radius: 1rem !important;
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+  }
+
+  .info-card h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .info-card p,
+  .info-card div {
+    font-size: 1.05rem !important;
+    line-height: 1.7 !important;
+  }
+}
+
+
+/* Remove card on mobile – keep on desktop */
+@media (max-width: 768px) {
+  .info-card {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 1.5rem !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+}

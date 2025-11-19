@@ -106,6 +106,50 @@ export default defineType({
       title: 'Contact Help Text',
       initialValue: 'Prefer a quick call? Drop a message with your number and we’ll reach out.',
     }),
+        // ——— NEW SECTIONS FOR HRIDMANN ———
+
+    defineField({
+      name: 'aboutHridmannTitle',
+      type: 'string',
+      title: 'About Hridmann – Title',
+      initialValue: 'About Hridmann',
+    }),
+
+    defineField({
+      name: 'aboutHridmannBody',
+      type: 'array',
+      title: 'About Hridmann – Body',
+      of: [{ type: 'block' }],
+    }),
+
+    defineField({
+      name: 'visionTitle',
+      type: 'string',
+      title: 'Vision & Philosophy – Title',
+      initialValue: 'Vision & Philosophy',
+    }),
+
+    defineField({
+      name: 'visionBody',
+      type: 'array',
+      title: 'Vision & Philosophy – Body',
+      of: [{ type: 'block' }],
+    }),
+
+    defineField({
+      name: 'whyChooseTitle',
+      type: 'string',
+      title: 'Why Choose Hridmann – Title',
+      initialValue: 'Why Choose Hridmann',
+    }),
+
+    defineField({
+      name: 'whyChooseList',
+      type: 'array',
+      title: 'Why Choose Hridmann – Bullet Points',
+      of: [{ type: 'string' }],
+    }),
+
   ],
 })
 

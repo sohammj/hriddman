@@ -104,14 +104,29 @@ export default function MobileNavOverlay({
         <div className="mobile-overlay__body">
           <ul className="list-unstyled m-0">
             <li className="mo-item">
-              <a
-                href="#about"
-                className="mo-link"
-                onClick={(e) => handleAnchor(e, "#about")}
-              >
-                About
+              <a href="#about" className="mo-link" onClick={(e) => handleAnchor(e, "#about")}>
+                Founder
               </a>
             </li>
+
+            <li className="mo-item">
+              <a href="#about-hridmann" className="mo-link" onClick={(e) => handleAnchor(e, "#about-hridmann")}>
+                About Hridmann
+              </a>
+            </li>
+
+            <li className="mo-item">
+              <a href="#vision" className="mo-link" onClick={(e) => handleAnchor(e, "#vision")}>
+                Vision & Philosophy
+              </a>
+            </li>
+
+            <li className="mo-item">
+              <a href="#why-choose" className="mo-link" onClick={(e) => handleAnchor(e, "#why-choose")}>
+                Why Choose
+              </a>
+            </li>
+
 
             <li className="mo-item">
               <button

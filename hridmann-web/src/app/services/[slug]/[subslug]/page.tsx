@@ -26,6 +26,13 @@ type SubService = {
   quickFacts?: QuickFact[];
 };
 
+type NavService = {
+  _id?: string;
+  title: string;
+  slug?: { current?: string };
+};
+
+
 export const revalidate = 60;
 
 export async function generateStaticParams() {
@@ -98,32 +105,68 @@ export default async function SubServicePage(
 
   return (
     <main>
-      {/* NAV */}
       <nav className="navbar navbar-expand-lg navbar-light py-3 sticky-top header">
         <div className="container">
+
           <Link href="/" className="navbar-brand fw-semibold">
             {settings?.siteName ?? "Hridmann"}
           </Link>
+
           <ul className="navbar-nav ms-auto d-none d-lg-flex flex-row align-items-center gap-3">
+
             <li className="nav-item">
-              <Link className="nav-link text-dark" href="/#about">About</Link>
+              <Link className="nav-link text-dark" href="/#about">Founder</Link>
             </li>
+
             <li className="nav-item">
-              <Link className="nav-link text-dark" href="/#services">Services</Link>
+              <Link className="nav-link text-dark" href="/#about-hridmann">About</Link>
             </li>
+
+            <li className="nav-item">
+              <Link className="nav-link text-dark" href="/#vision">Vision</Link>
+            </li>
+
+            <li className="nav-item dropdown position-static">
+              <Link className="nav-link text-dark px-0" href="/#services">Services</Link>
+
+              <ul className="dropdown-menu shadow border-0 rounded-3 p-2 menu-elev" style={{ minWidth: "20rem" }}>
+                {allServices?.map((s: NavService, i: number) => (
+                  <li key={s._id ?? s.slug?.current ?? i}>
+                    {s.slug?.current ? (
+                      <Link
+                        className="dropdown-item rounded-2 py-2"
+                        href={`/services/${s.slug.current}`}
+                      >
+                        {s.title}
+                      </Link>
+                    ) : (
+                      <span className="dropdown-item rounded-2 py-2 disabled">
+                        {s.title}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </li>
+
             <li className="nav-item">
               <Link className="nav-link text-dark" href="/#testimonials">Testimonials</Link>
             </li>
+
             <li className="nav-item">
               <Link className="nav-link text-dark" href="/gallery">Gallery</Link>
             </li>
+
             <li className="nav-item">
               <Link className="nav-link text-dark" href="/#contact">Contact</Link>
             </li>
+
           </ul>
+
           <MobileNavOverlay services={allServices} brand={settings?.siteName ?? "Hridmann"} />
         </div>
       </nav>
+
 
       {/* BACK BUTTON */}
       <section className="bg-light py-3 border-bottom">

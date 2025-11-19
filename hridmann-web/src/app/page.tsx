@@ -63,6 +63,12 @@ type Home = {
   testimonialsSubtitle?: string
   contactTitle?: string
   contactHelpText?: string
+  aboutHridmannTitle?: string
+  aboutHridmannBody?: PortableTextBlock[]
+  visionTitle?: string
+  visionBody?: PortableTextBlock[]
+  whyChooseTitle?: string
+  whyChooseList?: string[]
 }
 
 type Settings = {
@@ -131,8 +137,17 @@ export default async function HomePage() {
           {/* Desktop menu */}
           <ul className="navbar-nav ms-auto d-none d-lg-flex flex-row align-items-center gap-3">
             <li className="nav-item">
-              <Link className="nav-link text-dark" href="#about">About</Link>
+              <Link className="nav-link text-dark" href="#about">Founder</Link>
             </li>
+
+            <li className="nav-item">
+              <Link className="nav-link text-dark" href="#about-hridmann">About</Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link text-dark" href="#vision">Vision</Link>
+            </li>
+
 
             {/* Services dropdown — click scrolls to #services; hover shows list */}
             <li className="nav-item dropdown position-static" >
@@ -158,6 +173,11 @@ export default async function HomePage() {
                 ))}
               </ul>
             </li>
+
+            <li className="nav-item">
+              <Link className="nav-link text-dark" href="#why-choose">Why Choose</Link>
+            </li>
+
 
             <li className="nav-item">
               <Link className="nav-link text-dark" href="#testimonials">Testimonials</Link>
@@ -292,6 +312,44 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <section id="about-hridmann" className="section-pad card-soft">
+        <div className="container">
+          <h2 className="fw-semibold mb-3">
+            {home?.aboutHridmannTitle || "About Hridmann"}
+          </h2>
+
+          <div className="mb-3">
+            {home?.aboutHridmannBody && <PortableText value={home.aboutHridmannBody} />}
+          </div>
+        </div>
+      </section>
+      {/* <section id="about-hridmann" className="section-pad">
+        <div className="container">
+          <div className="card card-soft p-5 rounded-4 shadow-sm info-card">
+            <h2 className="fw-semibold mb-4">{home?.aboutHridmannTitle}</h2>
+            <div className="text-dark fs-5 lh-lg">
+              {home?.aboutHridmannBody && (
+                <PortableText value={home.aboutHridmannBody} />
+              )}
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      <section id="vision" className="section-pad card-soft">
+        <div className="container">
+          <h2 className="fw-semibold mb-3">
+            {home?.visionTitle || "Vision & Philosophy"}
+          </h2>
+
+          <div className="mb-3">
+            {home?.visionBody && <PortableText value={home.visionBody} />}
+          </div>
+        </div>
+      </section>
+
+    
+
       {/* SERVICES */}
       {/* SERVICES */}
       <section id="services" className="section-pad card-soft">
@@ -330,6 +388,19 @@ export default async function HomePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+      <section id="why-choose" className="section-pad card-soft">
+        <div className="container">
+          <h2 className="fw-semibold mb-3">
+            {home?.whyChooseTitle || "Why Choose Hridmann"}
+          </h2>
+
+          <ul className="list-unstyled">
+            {home?.whyChooseList?.map((point, i) => (
+              <li key={i} className="mb-2">• {point}</li>
+            ))}
+          </ul>
         </div>
       </section>
 
