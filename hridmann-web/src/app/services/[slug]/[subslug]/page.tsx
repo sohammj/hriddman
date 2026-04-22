@@ -187,13 +187,12 @@ export default async function SubServicePage(
             </div>
             <div className="col-lg-6">
               {subService.heroImage?.asset?.url && (
-                <div className="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm">
-                  <img
-                    src={subService.heroImage.asset.url}
-                    alt={subService.title}
-                    className="w-100 h-100 object-fit-cover"
-                  />
-                </div>
+                <img
+                  src={subService.heroImage.asset.url}
+                  alt={subService.title}
+                  className="w-100 rounded-4 shadow-sm"
+                  style={{ display: "block" }}
+                />
               )}
             </div>
           </div>
