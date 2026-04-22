@@ -179,14 +179,13 @@ export default async function ServicePage(
             </div>
             <div className="col-lg-6">
               {service.heroImage?.asset?.url && (
-                <div className="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={service.heroImage.asset.url}
-                    alt={service.title}
-                    className="w-100 h-100 object-fit-cover"
-                  />
-                </div>
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={service.heroImage.asset.url}
+                  alt={service.title}
+                  className="w-100 rounded-4 shadow-sm"
+                  style={{ display: "block" }}
+                />
               )}
             </div>
           </div>
