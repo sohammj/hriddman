@@ -499,7 +499,7 @@ export default async function HomePage() {
                         }`}
                       >
                         {/* Image */}
-                        {event.flyer?.asset && (
+                        {/* {event.flyer?.asset && (
                           <div className="ratio ratio-16x9 rounded-top-4 overflow-hidden">
                             <Image
                               src={urlFor(event.flyer)
@@ -511,6 +511,17 @@ export default async function HomePage() {
                               width={1200}
                               height={800}
                               className="object-fit-cover"
+                            />
+                          </div>
+                        )} */}
+                        {event.flyer?.asset && (
+                          <div className="rounded-top-4 overflow-hidden">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={urlFor(event.flyer).width(900).url()}
+                              alt={event.title}
+                              style={{ width: "100%", height: "auto", display: "block" }}
+                              className="rounded-top-4"
                             />
                           </div>
                         )}
